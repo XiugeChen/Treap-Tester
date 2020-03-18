@@ -10,4 +10,4 @@ set(CMAKE_CXX_STANDARD 14)
 add_executable(TreapTester
     src/main.cpp
     src/data_generator.cpp
-)
+        include/types.h)
