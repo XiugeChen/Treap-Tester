@@ -15,11 +15,11 @@ namespace Xiuge { namespace TreapTester {
 
 class TesterApp {
 public:
-    TesterApp(uint32_t keyRange, IDataStruct* dataStruct);
+    TesterApp(const uint32_t keyRange, IDataStruct* dataStruct);
 
-    void percent_fixed_test(std::vector<uint32_t> dataLens, std::array<double, 3> percentage) const;
+    void percent_fixed_test(const std::vector<uint32_t> dataLens, const std::array<double, 3> percentage) const;
 
-    void len_fixed_test(uint32_t dataLen, std::vector<std::array<double, 3>> percentages) const;
+    void len_fixed_test(const uint32_t dataLen, const std::vector<std::array<double, 3>> percentages) const;
 
 private:
     std::unique_ptr<DataGenerator> mDataGen;

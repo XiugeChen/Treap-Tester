@@ -22,6 +22,18 @@ struct Element {
 
     uint32_t id;
     uint32_t key;
+
+    bool operator==(const Element& elem) {
+        return id == elem.id && key == elem.key;
+    }
+
+    bool operator<(const Element& elem) {
+        return (key < elem.key) || (key == elem.key && id < elem.id);
+    }
+
+    bool operator>(const Element& elem) {
+        return (key > elem.key) || (key == elem.key && id > elem.id);
+    }
 };
 
 enum class OperationType {
@@ -40,18 +52,30 @@ struct Operation {
     Element element;
 };
 
+struct TreapNode {
+    TreapNode(Element newElem, double newPriority) {
+        element = newElem;
+        priority = newPriority;
+    }
+
+    Element element;
+    double priority;
+
+    std::unique_ptr<TreapNode> left{ nullptr };
+    std::unique_ptr<TreapNode> right{ nullptr };
+    TreapNode* parent{ nullptr };
+};
+
 /**
  * Common interface of all data structures
  */
 class IDataStruct {
-
-
 public:
-    virtual void insert(Operation operation) = 0;
+    virtual void insert(const Operation operation) = 0;
     // Return true if delete successfully, otherwise return false
-    virtual bool delete_key(Operation operation) = 0;
+    virtual bool delete_key(const Operation operation) = 0;
     // Return element if find it, otherwise return NULL
-    virtual Element search_key(Operation operation) = 0;
+    virtual Element search_key(const Operation operation) = 0;
 };
 
 }} // namespace ::Xiuge::TreapTester

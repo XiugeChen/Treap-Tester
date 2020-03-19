@@ -8,7 +8,7 @@
 
 namespace Xiuge { namespace TreapTester {
 
-void Dummy::insert(Operation operation) {
+void Dummy::insert(const Operation operation) {
     if (operation.type != OperationType::INSERT)
         throw std::runtime_error("[Dummy] Insert invalid operation");
 
@@ -20,7 +20,7 @@ void Dummy::insert(Operation operation) {
     mDynamicArray.push_back(operation.element);
 }
 
-bool Dummy::delete_key(Operation operation) {
+bool Dummy::delete_key(const Operation operation) {
     if (operation.type != OperationType::DELETE)
         throw std::runtime_error("[Dummy] Delete invalid operation");
 
@@ -57,7 +57,7 @@ bool Dummy::delete_key(Operation operation) {
     return false;
 }
 
-Element Dummy::search_key(Operation operation) {
+Element Dummy::search_key(const Operation operation) {
     if (operation.type != OperationType::SEARCH)
         throw std::runtime_error("[Dummy] Search invalid operation");
 

@@ -8,13 +8,12 @@
 
 namespace Xiuge { namespace TreapTester {
 
-TesterApp::TesterApp(uint32_t keyRange, IDataStruct* dataStruct)
+TesterApp::TesterApp(const uint32_t keyRange, IDataStruct* dataStruct)
     : mDataGen(new DataGenerator(keyRange))
     , mDataStruct(dataStruct)
-{
-}
+{}
 
-void TesterApp::percent_fixed_test(std::vector<uint32_t> dataLens, std::array<double, 3> percentage) const {
+void TesterApp::percent_fixed_test(const std::vector<uint32_t> dataLens, const std::array<double, 3> percentage) const {
     spdlog::info("Start percentage fixed testing with percentage: insert={}, delete={}, search={}",
                  percentage[0], percentage[1], percentage[2]);
 
@@ -22,6 +21,8 @@ void TesterApp::percent_fixed_test(std::vector<uint32_t> dataLens, std::array<do
         spdlog::info("Start with length={}", len);
 
         for (uint32_t i = 0; i < len; i++) {
+            // TODO: time count
+
             Operation operation = mDataGen->gen_with_prob(percentage);
 
             switch (operation.type) {
@@ -41,7 +42,7 @@ void TesterApp::percent_fixed_test(std::vector<uint32_t> dataLens, std::array<do
     }
 }
 
-void TesterApp::len_fixed_test(uint32_t dataLen, std::vector<std::array<double, 3>> percentages) const {
+void TesterApp::len_fixed_test(const uint32_t dataLen, const std::vector<std::array<double, 3>> percentages) const {
     spdlog::info("Start with length fixed testing with length={}", dataLen);
 
     for (auto percentage: percentages) {
@@ -49,6 +50,8 @@ void TesterApp::len_fixed_test(uint32_t dataLen, std::vector<std::array<double, 
                      percentage[0], percentage[1], percentage[2]);
 
         for (uint32_t i = 0; i < dataLen; i++) {
+            // TODO: time count
+
             Operation operation = mDataGen->gen_with_prob(percentage);
 
             switch (operation.type) {

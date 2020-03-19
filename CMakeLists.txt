@@ -19,6 +19,7 @@ add_executable(TreapTester
     src/data_generator.cpp
     src/dummy.cpp
     src/tester.app.cpp
+    src/treap.cpp
 )
 
 spdlog_enable_warnings(TreapTester)

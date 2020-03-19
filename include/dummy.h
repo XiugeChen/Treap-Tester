@@ -17,9 +17,9 @@ namespace Xiuge { namespace TreapTester {
  */
 class Dummy : public IDataStruct {
 public:
-    void insert(Operation operation) override;
-    bool delete_key(Operation operation) override;
-    Element search_key(Operation operation) override;
+    void insert(const Operation operation) override;
+    bool delete_key(const Operation operation) override;
+    Element search_key(const Operation operation) override;
 
 private:
     std::vector<Element> mDynamicArray;
