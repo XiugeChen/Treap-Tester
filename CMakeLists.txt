@@ -5,9 +5,19 @@ include_directories(
     include
 )
 
+include(cmake/utils.cmake)
+
+if(NOT TARGET spdlog)
+    # Stand-alone build
+    find_package(spdlog REQUIRED)
+endif()
+
 set(CMAKE_CXX_STANDARD 14)
 
 add_executable(TreapTester
     src/main.cpp
     src/data_generator.cpp
-        include/types.h)
+    src/dummy.cpp)
+
+spdlog_enable_warnings(TreapTester)
+target_link_libraries(TreapTester PRIVATE spdlog::spdlog)

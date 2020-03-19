@@ -40,6 +40,17 @@ struct Operation {
     Element element;
 };
 
+/**
+ * Common interface of all data structures
+ */
+class IDataStruct {
+    virtual void insert(Operation operation) = 0;
+    // Return true if delete successfully, otherwise return false
+    virtual bool delete_key(Operation operation) = 0;
+    // Return element if find it, otherwise return NULL
+    virtual Element search_key(Operation operation) = 0;
+};
+
 }} // namespace ::Xiuge::TreapTester
 
 #endif //TREAPTESTER_TYPES_H

@@ -13,6 +13,9 @@
 
 namespace Xiuge { namespace TreapTester {
 
+/**
+ * Data generator of this experiment, will produce one of insertion, deletion or search operation
+ */
 class DataGenerator {
 public:
     DataGenerator(uint32_t range);
