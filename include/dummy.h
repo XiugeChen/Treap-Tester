@@ -7,7 +7,7 @@
 
 #include <vector>
 
-#import "types.h"
+#include "types.h"
 
 namespace Xiuge { namespace TreapTester {
 

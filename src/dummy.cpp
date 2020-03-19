@@ -10,10 +10,10 @@ namespace Xiuge { namespace TreapTester {
 
 void Dummy::insert(Operation operation) {
     if (operation.type != OperationType::INSERT)
-        throw std::runtime_error("Insert invalid operation");
+        throw std::runtime_error("[Dummy] Insert invalid operation");
 
     if (operation.element.id == 0)
-        throw std::runtime_error("Insert invalid element");
+        throw std::runtime_error("[Dummy] Insert invalid element");
 
     spdlog::info("[Dummy] insert operation, id={}, key={}", operation.element.id, operation.element.key);
 
@@ -22,10 +22,10 @@ void Dummy::insert(Operation operation) {
 
 bool Dummy::delete_key(Operation operation) {
     if (operation.type != OperationType::DELETE)
-        throw std::runtime_error("Delete invalid operation");
+        throw std::runtime_error("[Dummy] Delete invalid operation");
 
     if (operation.element.id != 0)
-        throw std::runtime_error("Delete invalid element");
+        throw std::runtime_error("[Dummy] Delete invalid element");
 
     spdlog::info("[Dummy] delete operation, id={}, key={}", operation.element.id, operation.element.key);
 
@@ -41,7 +41,7 @@ bool Dummy::delete_key(Operation operation) {
 
         // resize the array if has filled less than 1/4 elements
         if (mDynamicArray.size() < mDynamicArray.capacity() / 4) {
-            uint32_t newCap = mDynamicArray.capacity() / 2;
+            uint32_t newCap = static_cast<uint32_t>(mDynamicArray.capacity() / 2);
 
             mDynamicArray.shrink_to_fit();
             mDynamicArray.reserve(newCap);
@@ -49,19 +49,20 @@ bool Dummy::delete_key(Operation operation) {
             spdlog::info("[Dummy] resize dynamic array, newSize={}, newCapacity={}", mDynamicArray.size(),
                     mDynamicArray.capacity());
         }
+
+        return true;
     }
-    else {
-        spdlog::info("[Dummy] delete operation, can't find element");
-        return false;
-    }
+
+    spdlog::info("[Dummy] delete operation, can't find element");
+    return false;
 }
 
 Element Dummy::search_key(Operation operation) {
     if (operation.type != OperationType::SEARCH)
-        throw std::runtime_error("Search invalid operation");
+        throw std::runtime_error("[Dummy] Search invalid operation");
 
     if (operation.element.id != 0)
-        throw std::runtime_error("Search invalid element");
+        throw std::runtime_error("[Dummy] Search invalid element");
 
     spdlog::info("[Dummy] search operation, id={}, key={}", operation.element.id, operation.element.key);
 

@@ -44,6 +44,9 @@ struct Operation {
  * Common interface of all data structures
  */
 class IDataStruct {
+
+
+public:
     virtual void insert(Operation operation) = 0;
     // Return true if delete successfully, otherwise return false
     virtual bool delete_key(Operation operation) = 0;

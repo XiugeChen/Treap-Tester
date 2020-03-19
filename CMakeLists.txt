@@ -17,7 +17,9 @@ set(CMAKE_CXX_STANDARD 14)
 add_executable(TreapTester
     src/main.cpp
     src/data_generator.cpp
-    src/dummy.cpp)
+    src/dummy.cpp
+    src/tester.app.cpp
+)
 
 spdlog_enable_warnings(TreapTester)
 target_link_libraries(TreapTester PRIVATE spdlog::spdlog)

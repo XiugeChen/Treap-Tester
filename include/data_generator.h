@@ -8,6 +8,7 @@
 #include <iostream>
 #include <random>
 #include <unordered_map>
+#include <array>
 
 #include "types.h"
 
@@ -19,6 +20,8 @@ namespace Xiuge { namespace TreapTester {
 class DataGenerator {
 public:
     DataGenerator(uint32_t range);
+
+    Operation gen_with_prob(std::array<double, 3> percentage);
 
     Operation gen_insertion();
     Operation gen_deletion();
@@ -33,6 +36,8 @@ private:
     std::uniform_int_distribution<uint32_t > mKeyDist;
     // Uniform distribution of id (is changed every time call deletion)
     std::uniform_int_distribution<uint32_t > mIdDist;
+    //
+    std::uniform_real_distribution<double> mPercentDist;
 
     // A map to store all deleted elements
     std::unordered_map<uint32_t, uint32_t> mDeletedElems;
