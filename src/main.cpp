@@ -7,26 +7,23 @@
 
 using namespace ::Xiuge::TreapTester;
 
-const uint32_t KEY_RANGE = static_cast<const uint32_t>(pow(10, 1));
-const uint32_t DATA_LEN_BASE = static_cast<const uint32_t>(pow(10, 1));
+const uint32_t KEY_RANGE = static_cast<const uint32_t>(pow(10, 7));
+const uint32_t DATA_LEN_BASE = static_cast<const uint32_t>(pow(10, 6));
 
 int main() {
+    spdlog::set_level(spdlog::level::info);
+
     spdlog::info("Start treap tester");
 
     Treap dataStruct;
     TesterApp testerApp(KEY_RANGE, &dataStruct);
 
-    // Test
-    std::vector<uint32_t> dataLens{20};
-    std::array<double, 3> percentage{0.8, 0.2, 0};
-    testerApp.percent_fixed_test(dataLens, percentage);
-
-    /*/ Experiement 1: test with various element length on insertion only
+    // Experiement 1: test with various element length on insertion only
     std::vector<uint32_t> dataLens{1 * DATA_LEN_BASE, 2 * DATA_LEN_BASE, 5 * DATA_LEN_BASE, 8 * DATA_LEN_BASE, 10 * DATA_LEN_BASE};
     std::array<double, 3> percentage{1.0, 0.0, 0.0};
     testerApp.percent_fixed_test(dataLens, percentage);
 
-    // Experiement 2: test with various deletion percentage
+    /*/ Experiement 2: test with various deletion percentage
     std::vector<std::array<double, 3>> percentages;
     percentages.push_back({0.999,0.001,0});
     percentages.push_back({0.995,0.005,0});
@@ -49,8 +46,6 @@ int main() {
     std::array<double, 3> percentage{0.9, 0.05, 0.05};
     testerApp.percent_fixed_test(dataLens, percentage);
     */
-
-    spdlog::info("Finish treap tester");
 
     return 0;
 }

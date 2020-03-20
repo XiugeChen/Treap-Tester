@@ -22,7 +22,7 @@ void Treap::insert(const Operation operation) {
     if (operation.element.id == 0)
         throw std::runtime_error("[Treap] Insert invalid element");
 
-    spdlog::info("[Treap] insert operation, id={}, key={}", operation.element.id, operation.element.key);
+    spdlog::debug("[Treap] insert operation, id={}, key={}", operation.element.id, operation.element.key);
 
     if (!mRoot) {
         mRoot = std::make_unique<TreapNode>(operation.element, mPriorityDist(mGenerator));
@@ -33,8 +33,8 @@ void Treap::insert(const Operation operation) {
 
     maintain_priority(insertedNode);
 
-    spdlog::info("[Treap] Finial insertion result");
-    print(mRoot.get(), 0);
+    // spdlog::debug("[Treap] Finial insertion result");
+    // print(mRoot.get(), 0);
 }
 
 bool Treap::delete_key(const Operation operation) {
@@ -44,7 +44,7 @@ bool Treap::delete_key(const Operation operation) {
     if (operation.element.id != 0)
         throw std::runtime_error("[Treap] Delete invalid element");
 
-    spdlog::info("[Treap] delete operation, id={}, key={}", operation.element.id, operation.element.key);
+    spdlog::debug("[Treap] delete operation, id={}, key={}", operation.element.id, operation.element.key);
 
     if (mRoot) {
         TreapNode* deleteNode = bst_search(mRoot.get(), operation.element);
@@ -56,8 +56,8 @@ bool Treap::delete_key(const Operation operation) {
                 maintain_priority(deleteNode);
             }
 
-            spdlog::info("[Treap] Deletion final rotation results");
-            print(mRoot.get(), 0);
+            // spdlog::debug("[Treap] Deletion final rotation results");
+            // print(mRoot.get(), 0);
 
             if (deleteNode->parent->left && deleteNode->parent->left->element == deleteNode->element)
                 deleteNode->parent->left.reset(nullptr);
@@ -69,7 +69,7 @@ bool Treap::delete_key(const Operation operation) {
         }
     }
 
-    spdlog::info("[Treap] delete operation, can't find element");
+    spdlog::debug("[Treap] delete operation, can't find element");
     return false;
 }
 
@@ -80,7 +80,7 @@ Element Treap::search_key(const Operation operation) {
     if (operation.element.id != 0)
         throw std::runtime_error("[Treap] Search invalid element");
 
-    spdlog::info("[Treap] search operation, id={}, key={}", operation.element.id, operation.element.key);
+    spdlog::debug("[Treap] search operation, id={}, key={}", operation.element.id, operation.element.key);
 
     if (mRoot) {
         TreapNode* result = bst_search(mRoot.get(), operation.element);
@@ -89,7 +89,7 @@ Element Treap::search_key(const Operation operation) {
             return result->element;
     }
 
-    spdlog::info("[Treap] search operation, can't find element");
+    spdlog::debug("[Treap] search operation, can't find element");
     return{0, 0};
 }
 
@@ -156,7 +156,7 @@ void Treap::maintain_priority(TreapNode* startNode) {
     if (startNode->parent && startNode->parent->priority > startNode->priority) {
         // if child node is the left child of parent, do a right rotation
         if (startNode->parent->left && startNode->parent->left->element == startNode->element) {
-            spdlog::info("[Treap] perform right rotation from key={}, id={}, priority={}",
+            spdlog::debug("[Treap] perform right rotation from key={}, id={}, priority={}",
                     startNode->element.key, startNode->element.id, startNode->priority);
 
             std::unique_ptr<TreapNode> temp = std::move(startNode->parent->left);
@@ -194,7 +194,7 @@ void Treap::maintain_priority(TreapNode* startNode) {
         }
         // if child node is the right child of parent, do a left rotation
         else if (startNode->parent->right && startNode->parent->right->element == startNode->element) {
-            spdlog::info("[Treap] perform left rotation from key={}, id={}, priority={}",
+            spdlog::debug("[Treap] perform left rotation from key={}, id={}, priority={}",
                     startNode->element.key, startNode->element.id, startNode->priority);
 
             std::unique_ptr<TreapNode> temp = std::move(startNode->parent->right);

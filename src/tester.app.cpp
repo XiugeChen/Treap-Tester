@@ -2,6 +2,7 @@
 // Created by Xiuge Chen on 3/19/20.
 //
 
+#include <chrono>
 #include <spdlog/spdlog.h>
 
 #include "tester_app.h"
@@ -20,9 +21,11 @@ void TesterApp::percent_fixed_test(const std::vector<uint32_t> dataLens, const s
     for (auto len: dataLens) {
         spdlog::info("Start with length={}", len);
 
-        for (uint32_t i = 0; i < len; i++) {
-            // TODO: time count
+        long long int startTime = std::chrono::duration_cast<std::chrono::milliseconds>(
+                std::chrono::system_clock::now().time_since_epoch()
+        ).count();
 
+        for (uint32_t i = 0; i < len; i++) {
             Operation operation = mDataGen->gen_with_prob(percentage);
 
             switch (operation.type) {
@@ -39,6 +42,12 @@ void TesterApp::percent_fixed_test(const std::vector<uint32_t> dataLens, const s
                     throw std::runtime_error("[TesterApp] Unkown operation type");
             }
         }
+
+        long long int endTime = std::chrono::duration_cast<std::chrono::milliseconds>(
+                std::chrono::system_clock::now().time_since_epoch()
+        ).count();
+
+        spdlog::info("Finsh length fixed testing with length={}, timeInMilli={}", len, endTime - startTime);
     }
 }
 
@@ -48,6 +57,10 @@ void TesterApp::len_fixed_test(const uint32_t dataLen, const std::vector<std::ar
     for (auto percentage: percentages) {
         spdlog::info("Start with percentage: insert={}, delete={}, search={}",
                      percentage[0], percentage[1], percentage[2]);
+
+        long long int startTime = std::chrono::duration_cast<std::chrono::milliseconds>(
+                std::chrono::system_clock::now().time_since_epoch()
+        ).count();
 
         for (uint32_t i = 0; i < dataLen; i++) {
             // TODO: time count
@@ -68,6 +81,13 @@ void TesterApp::len_fixed_test(const uint32_t dataLen, const std::vector<std::ar
                     throw std::runtime_error("[TesterApp] Unkown operation type");
             }
         }
+
+        long long int endTime = std::chrono::duration_cast<std::chrono::milliseconds>(
+                std::chrono::system_clock::now().time_since_epoch()
+        ).count();
+
+        spdlog::info("Finsh length fixed testing with insert={}, delete={}, search={}, timeInMilli={}",
+                     percentage[0], percentage[1], percentage[2], endTime - startTime);
     }
 }
 
