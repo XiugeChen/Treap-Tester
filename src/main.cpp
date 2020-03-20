@@ -3,21 +3,22 @@
 
 #include "tester_app.h"
 #include "dummy.h"
+#include "treap.h"
 
 using namespace ::Xiuge::TreapTester;
 
-const uint32_t KEY_RANGE = static_cast<const uint32_t>(pow(10, 7));
+const uint32_t KEY_RANGE = static_cast<const uint32_t>(pow(10, 1));
 const uint32_t DATA_LEN_BASE = static_cast<const uint32_t>(pow(10, 1));
 
 int main() {
     spdlog::info("Start treap tester");
 
-    Dummy dataStruct;
+    Treap dataStruct;
     TesterApp testerApp(KEY_RANGE, &dataStruct);
 
     // Test
-    std::vector<uint32_t> dataLens{1 * DATA_LEN_BASE};
-    std::array<double, 3> percentage{0.5, 0.3, 0.2};
+    std::vector<uint32_t> dataLens{20};
+    std::array<double, 3> percentage{0.8, 0.2, 0};
     testerApp.percent_fixed_test(dataLens, percentage);
 
     /*/ Experiement 1: test with various element length on insertion only

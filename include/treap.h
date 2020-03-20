@@ -19,6 +19,8 @@ public:
     bool delete_key(const Operation operation) override;
     Element search_key(const Operation operation) override;
 
+    void print(TreapNode* node, int level);
+
 private:
     // Perform binary search tree insert, return the inserted node
     TreapNode* bst_insert(TreapNode* startNode, Element insertElem);
