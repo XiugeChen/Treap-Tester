@@ -15,7 +15,7 @@ void Dummy::insert(const Operation operation) {
     if (operation.element.id == 0)
         throw std::runtime_error("[Dummy] Insert invalid element");
 
-    spdlog::info("[Dummy] insert operation, id={}, key={}", operation.element.id, operation.element.key);
+    spdlog::debug("[Dummy] insert operation, id={}, key={}", operation.element.id, operation.element.key);
 
     mDynamicArray.push_back(operation.element);
 }
@@ -27,7 +27,7 @@ bool Dummy::delete_key(const Operation operation) {
     if (operation.element.id != 0)
         throw std::runtime_error("[Dummy] Delete invalid element");
 
-    spdlog::info("[Dummy] delete operation, id={}, key={}", operation.element.id, operation.element.key);
+    spdlog::debug("[Dummy] delete operation, id={}, key={}", operation.element.id, operation.element.key);
 
     std::vector<uint32_t>::size_type i = 0;
     for(; i < mDynamicArray.size(); i++) {
@@ -46,14 +46,14 @@ bool Dummy::delete_key(const Operation operation) {
             mDynamicArray.shrink_to_fit();
             mDynamicArray.reserve(newCap);
 
-            spdlog::info("[Dummy] resize dynamic array, newSize={}, newCapacity={}", mDynamicArray.size(),
+            spdlog::debug("[Dummy] resize dynamic array, newSize={}, newCapacity={}", mDynamicArray.size(),
                     mDynamicArray.capacity());
         }
 
         return true;
     }
 
-    spdlog::info("[Dummy] delete operation, can't find element");
+    spdlog::debug("[Dummy] delete operation, can't find element");
     return false;
 }
 
@@ -64,14 +64,14 @@ Element Dummy::search_key(const Operation operation) {
     if (operation.element.id != 0)
         throw std::runtime_error("[Dummy] Search invalid element");
 
-    spdlog::info("[Dummy] search operation, id={}, key={}", operation.element.id, operation.element.key);
+    spdlog::debug("[Dummy] search operation, id={}, key={}", operation.element.id, operation.element.key);
 
     for (auto& element : mDynamicArray) {
         if (element.key == operation.element.key)
             return element;
     }
 
-    spdlog::info("[Dummy] search operation, can't find element");
+    spdlog::debug("[Dummy] search operation, can't find element");
     return{0, 0};
 }
 

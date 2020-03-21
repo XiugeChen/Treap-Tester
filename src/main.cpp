@@ -8,13 +8,14 @@
 using namespace ::Xiuge::TreapTester;
 
 const uint32_t KEY_RANGE = static_cast<const uint32_t>(pow(10, 7));
-const uint32_t DATA_LEN_BASE = static_cast<const uint32_t>(pow(10, 6));
+const uint32_t DATA_LEN_BASE = static_cast<const uint32_t>(pow(10, 5));
 
 int main() {
     spdlog::set_level(spdlog::level::info);
 
     spdlog::info("Start treap tester");
 
+    // Dummy dataStruct;
     Treap dataStruct;
     TesterApp testerApp(KEY_RANGE, &dataStruct);
 
@@ -46,6 +47,5 @@ int main() {
     std::array<double, 3> percentage{0.9, 0.05, 0.05};
     testerApp.percent_fixed_test(dataLens, percentage);
     */
-
     return 0;
 }
