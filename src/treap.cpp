@@ -93,6 +93,10 @@ Element Treap::search_key(const Operation operation) {
     return{0, 0};
 }
 
+void Treap::clear() {
+    bst_clear(mRoot);
+}
+
 void Treap::print(TreapNode* node, int level)
 {
     if (node) {
@@ -149,6 +153,18 @@ TreapNode* Treap::bst_search(TreapNode* startNode, Element searchElem) {
         return bst_search(startNode->right.get(), searchElem);
 
     return nullptr;
+}
+
+void Treap::bst_clear(std::unique_ptr<TreapNode>& node) {
+    if (node) {
+        if (node->left)
+            bst_clear(node->left);
+
+        if (node->right)
+            bst_clear(node->right);
+
+        node.reset(nullptr);
+    }
 }
 
 void Treap::maintain_priority(TreapNode* startNode) {

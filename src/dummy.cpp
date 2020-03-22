@@ -75,4 +75,9 @@ Element Dummy::search_key(const Operation operation) {
     return{0, 0};
 }
 
+void Dummy::clear() {
+    mDynamicArray.clear();
+    mDynamicArray.shrink_to_fit();
+}
+
 }} // namespace ::Xiuge::TreapTester

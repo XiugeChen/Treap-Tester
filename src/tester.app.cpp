@@ -21,6 +21,8 @@ void TesterApp::percent_fixed_test(const std::vector<uint32_t> dataLens, const s
     for (auto len: dataLens) {
         spdlog::info("Start with length={}", len);
 
+        mDataStruct->clear();
+
         long long int startTime = std::chrono::duration_cast<std::chrono::milliseconds>(
                 std::chrono::system_clock::now().time_since_epoch()
         ).count();
@@ -58,13 +60,13 @@ void TesterApp::len_fixed_test(const uint32_t dataLen, const std::vector<std::ar
         spdlog::info("Start with percentage: insert={}, delete={}, search={}",
                      percentage[0], percentage[1], percentage[2]);
 
+        mDataStruct->clear();
+
         long long int startTime = std::chrono::duration_cast<std::chrono::milliseconds>(
                 std::chrono::system_clock::now().time_since_epoch()
         ).count();
 
         for (uint32_t i = 0; i < dataLen; i++) {
-            // TODO: time count
-
             Operation operation = mDataGen->gen_with_prob(percentage);
 
             switch (operation.type) {

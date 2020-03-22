@@ -1,12 +1,12 @@
-[2020-03-21 14:07:05.319] [info] Start treap tester
-[2020-03-21 14:07:05.320] [info] Start with length fixed testing with length=1000000
-[2020-03-21 14:07:05.320] [info] Start with percentage: insert=0.999, delete=0.0, search=0.001
-[2020-03-21 14:07:09.054] [info] Finsh length fixed testing with insert=0.999, delete=0.0, search=0.001, timeInMilli=3734
-[2020-03-21 14:07:09.054] [info] Start with percentage: insert=0.995, delete=0.0, search=0.005
-[2020-03-21 14:07:13.200] [info] Finsh length fixed testing with insert=0.995, delete=0.0, search=0.005, timeInMilli=4146
-[2020-03-21 14:07:13.200] [info] Start with percentage: insert=0.99, delete=0.0, search=0.01
-[2020-03-21 14:07:17.632] [info] Finsh length fixed testing with insert=0.99, delete=0.0, search=0.01, timeInMilli=4432
-[2020-03-21 14:07:17.632] [info] Start with percentage: insert=0.95, delete=0.0, search=0.05
-[2020-03-21 14:07:22.439] [info] Finsh length fixed testing with insert=0.95, delete=0.0, search=0.05, timeInMilli=4807
-[2020-03-21 14:07:22.439] [info] Start with percentage: insert=0.9, delete=0.0, search=0.1
-[2020-03-21 14:07:27.791] [info] Finsh length fixed testing with insert=0.9, delete=0.0, search=0.1, timeInMilli=5352
+[2020-03-22 20:56:21.125] [info] Start treap tester
+[2020-03-22 20:56:21.132] [info] Start with length fixed testing with length=1000000
+[2020-03-22 20:56:21.132] [info] Start with percentage: insert=0.999, delete=0.0, search=0.001
+[2020-03-22 20:56:24.823] [info] Finsh length fixed testing with insert=0.999, delete=0.0, search=0.001, timeInMilli=3691
+[2020-03-22 20:56:24.823] [info] Start with percentage: insert=0.995, delete=0.0, search=0.005
+[2020-03-22 20:56:28.975] [info] Finsh length fixed testing with insert=0.995, delete=0.0, search=0.005, timeInMilli=3707
+[2020-03-22 20:56:28.975] [info] Start with percentage: insert=0.99, delete=0.0, search=0.01
+[2020-03-22 20:56:33.144] [info] Finsh length fixed testing with insert=0.99, delete=0.0, search=0.01, timeInMilli=3673
+[2020-03-22 20:56:33.144] [info] Start with percentage: insert=0.95, delete=0.0, search=0.05
+[2020-03-22 20:56:37.605] [info] Finsh length fixed testing with insert=0.95, delete=0.0, search=0.05, timeInMilli=3916
+[2020-03-22 20:56:37.605] [info] Start with percentage: insert=0.9, delete=0.0, search=0.1
+[2020-03-22 20:56:41.694] [info] Finsh length fixed testing with insert=0.9, delete=0.0, search=0.1, timeInMilli=3583

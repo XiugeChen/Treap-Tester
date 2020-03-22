@@ -20,6 +20,7 @@ public:
     void insert(const Operation operation) override;
     bool delete_key(const Operation operation) override;
     Element search_key(const Operation operation) override;
+    void clear() override;
 
 private:
     std::vector<Element> mDynamicArray;

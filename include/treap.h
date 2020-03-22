@@ -18,6 +18,7 @@ public:
     void insert(const Operation operation) override;
     bool delete_key(const Operation operation) override;
     Element search_key(const Operation operation) override;
+    void clear() override;
 
     void print(TreapNode* node, int level);
 
@@ -26,7 +27,9 @@ private:
     TreapNode* bst_insert(TreapNode* startNode, Element insertElem);
     // perform binary search tree search
     TreapNode* bst_search(TreapNode* startNode, Element searchElem);
-    //
+    // Clear the nodes
+    void bst_clear(std::unique_ptr<TreapNode>& node);
+    // maintain priority through rotations
     void maintain_priority(TreapNode* startNode);
 
     // Will be used to obtain a seed for the random number engine

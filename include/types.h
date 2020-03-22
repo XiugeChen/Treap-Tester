@@ -76,6 +76,8 @@ public:
     virtual bool delete_key(const Operation operation) = 0;
     // Return element if find it, otherwise return NULL
     virtual Element search_key(const Operation operation) = 0;
+    // Clear all internal states
+    virtual void clear() = 0;
 };
 
 }} // namespace ::Xiuge::TreapTester
