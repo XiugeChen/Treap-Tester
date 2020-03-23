@@ -8,24 +8,30 @@
 #include <memory>
 #include <array>
 
-#include "types.h"
+#include "treap.h"
+#include "dummy.h"
 #include "data_generator.h"
 
-namespace Xiuge { namespace TreapTester {
+namespace Xiuge::TreapTester {
 
 class TesterApp {
 public:
-    TesterApp(const uint32_t keyRange, IDataStruct* dataStruct);
+    TesterApp(const uint32_t keyRange, Treap* treap, Dummy* dummy);
 
-    void percent_fixed_test(const std::vector<uint32_t> dataLens, const std::array<double, 3> percentage) const;
+    void percent_fixed_test(const std::vector<uint32_t> dataLens, const std::array<double, 3> percentage);
 
-    void len_fixed_test(const uint32_t dataLen, const std::vector<std::array<double, 3>> percentages) const;
+    void len_fixed_test(const uint32_t dataLen, const std::vector<std::array<double, 3>> percentages);
 
 private:
+    long long int runTreap();
+    long long int runDummy();
+
     std::unique_ptr<DataGenerator> mDataGen;
-    IDataStruct* mDataStruct;
+    std::vector<Operation> mData;
+    Treap* mTreap;
+    Dummy* mDummy;
 };
 
-}} // namespace ::Xiuge::TreapTester
+} // namespace ::Xiuge::TreapTester
 
 #endif //TREAPTESTER_TESTER_AOO_H

@@ -3,8 +3,9 @@
 //
 
 #include "data_generator.h"
+#include "utils.h"
 
-namespace Xiuge { namespace TreapTester {
+namespace Xiuge::TreapTester {
 
 DataGenerator::DataGenerator(const uint32_t range)
     : mGenerator( std::mt19937(mRd()) )
@@ -13,7 +14,7 @@ DataGenerator::DataGenerator(const uint32_t range)
 {}
 
 Operation DataGenerator::gen_with_prob(const std::array<double, 3> percentage) {
-    if (percentage[0] + percentage[1] + percentage[2] != 1)
+    if (unlikely(percentage[0] + percentage[1] + percentage[2] != 1))
         throw std::runtime_error("[DataGenerator] probability sums not equal to one");
 
     double probIndex = mPercentDist(mGenerator);
@@ -57,5 +58,5 @@ Operation DataGenerator::gen_search() {
     return Operation(OperationType::SEARCH, Element(0, mKeyDist(mGenerator)));
 }
 
-}} // namespace ::Xiuge::TreapTester
+} // namespace ::Xiuge::TreapTester
 

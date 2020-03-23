@@ -1,0 +1,17 @@
+[2020-03-23 11:02:59.278] [info] Start treap tester
+[2020-03-23 11:02:59.279] [info] Start percentage fixed testing with percentage: insert=0.9, delete=0.05, search=0.05
+[2020-03-23 11:02:59.279] [info] Start with length=100000
+[2020-03-23 11:02:59.617] [info] Finsh length fixed testing on Treap with length=100000, timeInMilli=246
+[2020-03-23 11:03:02.892] [info] Finsh length fixed testing on Dummy with length=100000, timeInMilli=3275
+[2020-03-23 11:03:02.892] [info] Start with length=200000
+[2020-03-23 11:03:03.541] [info] Finsh length fixed testing on Treap with length=200000, timeInMilli=410
+[2020-03-23 11:03:17.693] [info] Finsh length fixed testing on Dummy with length=200000, timeInMilli=14151
+[2020-03-23 11:03:17.693] [info] Start with length=500000
+[2020-03-23 11:03:19.347] [info] Finsh length fixed testing on Treap with length=500000, timeInMilli=1181
+[2020-03-23 11:04:46.684] [info] Finsh length fixed testing on Dummy with length=500000, timeInMilli=87335
+[2020-03-23 11:04:46.684] [info] Start with length=800000
+[2020-03-23 11:04:49.618] [info] Finsh length fixed testing on Treap with length=800000, timeInMilli=2057
+[2020-03-23 11:08:41.408] [info] Finsh length fixed testing on Dummy with length=800000, timeInMilli=231784
+[2020-03-23 11:08:41.409] [info] Start with length=1000000
+[2020-03-23 11:08:45.273] [info] Finsh length fixed testing on Treap with length=1000000, timeInMilli=2663
+[2020-03-23 11:14:49.143] [info] Finsh length fixed testing on Dummy with length=1000000, timeInMilli=363861

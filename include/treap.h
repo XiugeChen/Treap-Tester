@@ -9,7 +9,7 @@
 
 #include "types.h"
 
-namespace Xiuge { namespace TreapTester {
+namespace Xiuge::TreapTester {
 
 class Treap : public IDataStruct {
 public:
@@ -42,6 +42,6 @@ private:
     std::unique_ptr<TreapNode> mRoot{ nullptr };
 };
 
-}} // namespace ::Xiuge::TreapTester
+} // namespace ::Xiuge::TreapTester
 
 #endif //TREAPTESTER_TREAP_H

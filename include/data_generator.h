@@ -12,7 +12,7 @@
 
 #include "types.h"
 
-namespace Xiuge { namespace TreapTester {
+namespace Xiuge::TreapTester {
 
 /**
  * Data generator of this experiment, will produce one of insertion, deletion or search operation
@@ -47,6 +47,6 @@ private:
     uint32_t mId{ 1 };
 };
 
-}} // namespace ::Xiuge::TreapTester
+} // namespace ::Xiuge::TreapTester
 
 #endif //TREAPTESTER_DATA_GENERATOR_H

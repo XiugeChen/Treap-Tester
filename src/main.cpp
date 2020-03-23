@@ -15,9 +15,9 @@ int main() {
 
     spdlog::info("Start treap tester");
 
-    // Dummy dataStruct;
-    Treap dataStruct;
-    TesterApp testerApp(KEY_RANGE, &dataStruct);
+    Dummy dummy;
+    Treap treap;
+    TesterApp testerApp(KEY_RANGE, &treap, &dummy);
 
     // Experiement 1: test with various element length on insertion only
     std::vector<uint32_t> dataLens{1 * DATA_LEN_BASE, 2 * DATA_LEN_BASE, 5 * DATA_LEN_BASE, 8 * DATA_LEN_BASE, 10 * DATA_LEN_BASE};

@@ -9,7 +9,7 @@
 
 #include "types.h"
 
-namespace Xiuge { namespace TreapTester {
+namespace Xiuge::TreapTester {
 
 /**
  * Dummy implementation of this data structure
@@ -26,6 +26,6 @@ private:
     std::vector<Element> mDynamicArray;
 };
 
-}} // namespace ::Xiuge::TreapTester
+} // namespace ::Xiuge::TreapTester
 
 #endif //TREAPTESTER_DUMMY_H

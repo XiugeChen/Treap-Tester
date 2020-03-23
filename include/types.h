@@ -7,7 +7,7 @@
 
 #include <cstdint>
 
-namespace Xiuge { namespace TreapTester {
+namespace Xiuge::TreapTester {
 
 struct Element {
     Element(uint32_t newId, uint32_t newKey) {
@@ -80,6 +80,6 @@ public:
     virtual void clear() = 0;
 };
 
-}} // namespace ::Xiuge::TreapTester
+} // namespace ::Xiuge::TreapTester
 
 #endif //TREAPTESTER_TYPES_H

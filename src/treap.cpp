@@ -7,8 +7,9 @@
 #include <spdlog/spdlog.h>
 
 #include "treap.h"
+#include "utils.h"
 
-namespace Xiuge { namespace TreapTester {
+namespace Xiuge::TreapTester {
 
 Treap::Treap()
     : mGenerator( std::mt19937(mRd()) )
@@ -16,10 +17,10 @@ Treap::Treap()
 {}
 
 void Treap::insert(const Operation operation) {
-    if (operation.type != OperationType::INSERT)
+    if (unlikely(operation.type != OperationType::INSERT))
         throw std::runtime_error("[Treap] Insert invalid operation");
 
-    if (operation.element.id == 0)
+    if (unlikely(operation.element.id == 0))
         throw std::runtime_error("[Treap] Insert invalid element");
 
     spdlog::debug("[Treap] insert operation, id={}, key={}", operation.element.id, operation.element.key);
@@ -38,10 +39,10 @@ void Treap::insert(const Operation operation) {
 }
 
 bool Treap::delete_key(const Operation operation) {
-    if (operation.type != OperationType::DELETE)
+    if (unlikely(operation.type != OperationType::DELETE))
         throw std::runtime_error("[Treap] Delete invalid operation");
 
-    if (operation.element.id != 0)
+    if (unlikely(operation.element.id != 0))
         throw std::runtime_error("[Treap] Delete invalid element");
 
     spdlog::debug("[Treap] delete operation, id={}, key={}", operation.element.id, operation.element.key);
@@ -74,10 +75,10 @@ bool Treap::delete_key(const Operation operation) {
 }
 
 Element Treap::search_key(const Operation operation) {
-    if (operation.type != OperationType::SEARCH)
+    if (unlikely(operation.type != OperationType::SEARCH))
         throw std::runtime_error("[Treap] Search invalid operation");
 
-    if (operation.element.id != 0)
+    if (unlikely(operation.element.id != 0))
         throw std::runtime_error("[Treap] Search invalid element");
 
     spdlog::debug("[Treap] search operation, id={}, key={}", operation.element.id, operation.element.key);
@@ -113,10 +114,10 @@ void Treap::print(TreapNode* node, int level)
 }
 
 TreapNode* Treap::bst_insert(TreapNode* startNode, Element insertElem) {
-    if (!startNode)
+    if (unlikely(!startNode))
         throw std::runtime_error("[Treap] insert start node is null");
 
-    if (insertElem == startNode->element)
+    if (unlikely(insertElem == startNode->element))
         throw std::runtime_error("[Treap] Inserted element already exist in treap");
 
     if (insertElem < startNode->element) {
@@ -140,7 +141,7 @@ TreapNode* Treap::bst_insert(TreapNode* startNode, Element insertElem) {
 }
 
 TreapNode* Treap::bst_search(TreapNode* startNode, Element searchElem) {
-    if (!startNode)
+    if (unlikely(!startNode))
         throw std::runtime_error("[Treap] search start node is null");
 
     if (searchElem.key == startNode->element.key)
@@ -256,4 +257,4 @@ void Treap::maintain_priority(TreapNode* startNode) {
         maintain_priority(startNode->right.get());
 }
 
-}} // namespace ::Xiuge::TreapTester
+} // namespace ::Xiuge::TreapTester

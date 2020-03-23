@@ -5,14 +5,15 @@
 #include <spdlog/spdlog.h>
 
 #include  "dummy.h"
+#include "utils.h"
 
-namespace Xiuge { namespace TreapTester {
+namespace Xiuge::TreapTester {
 
 void Dummy::insert(const Operation operation) {
-    if (operation.type != OperationType::INSERT)
+    if (unlikely(operation.type != OperationType::INSERT))
         throw std::runtime_error("[Dummy] Insert invalid operation");
 
-    if (operation.element.id == 0)
+    if (unlikely(operation.element.id == 0))
         throw std::runtime_error("[Dummy] Insert invalid element");
 
     spdlog::debug("[Dummy] insert operation, id={}, key={}", operation.element.id, operation.element.key);
@@ -21,10 +22,10 @@ void Dummy::insert(const Operation operation) {
 }
 
 bool Dummy::delete_key(const Operation operation) {
-    if (operation.type != OperationType::DELETE)
+    if (unlikely(operation.type != OperationType::DELETE))
         throw std::runtime_error("[Dummy] Delete invalid operation");
 
-    if (operation.element.id != 0)
+    if (unlikely(operation.element.id != 0))
         throw std::runtime_error("[Dummy] Delete invalid element");
 
     spdlog::debug("[Dummy] delete operation, id={}, key={}", operation.element.id, operation.element.key);
@@ -41,7 +42,7 @@ bool Dummy::delete_key(const Operation operation) {
 
         // resize the array if has filled less than 1/4 elements
         if (mDynamicArray.size() < mDynamicArray.capacity() / 4) {
-            uint32_t newCap = static_cast<uint32_t>(mDynamicArray.capacity() / 2);
+            auto newCap = static_cast<uint32_t>(mDynamicArray.capacity() / 2);
 
             mDynamicArray.shrink_to_fit();
             mDynamicArray.reserve(newCap);
@@ -58,10 +59,10 @@ bool Dummy::delete_key(const Operation operation) {
 }
 
 Element Dummy::search_key(const Operation operation) {
-    if (operation.type != OperationType::SEARCH)
+    if (unlikely(operation.type != OperationType::SEARCH))
         throw std::runtime_error("[Dummy] Search invalid operation");
 
-    if (operation.element.id != 0)
+    if (unlikely(operation.element.id != 0))
         throw std::runtime_error("[Dummy] Search invalid element");
 
     spdlog::debug("[Dummy] search operation, id={}, key={}", operation.element.id, operation.element.key);
@@ -80,4 +81,4 @@ void Dummy::clear() {
     mDynamicArray.shrink_to_fit();
 }
 
-}} // namespace ::Xiuge::TreapTester
+} // namespace ::Xiuge::TreapTester
