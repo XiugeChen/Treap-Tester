@@ -18,7 +18,7 @@ add_executable(TreapTester
     src/main.cpp
     src/data_generator.cpp
     src/dummy.cpp
-    src/tester.app.cpp
+    src/tester_app.cpp
     src/treap.cpp
 )
 
